@@ -12,7 +12,7 @@ public class Menu {
 
         int opcao, id, genero, numeroDePaginas;
         float preco;
-        String nomeAutor;
+        String nomeAutor, nomeProduto;
 
         opcao = 0;
 
