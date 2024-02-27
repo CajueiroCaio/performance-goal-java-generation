@@ -2,17 +2,13 @@ package ecommerce.model;
 
 public class Livro extends Produto {
     private String nomeAutor, genero;
-    private int numeroDePaginas;
+    public int numeroDePaginas;
 
-    public Livro (int id, int numeroDePaginas, float preco, String nomeProduto, String nomeAutor, String genero) {
-        super(id, preco, nomeProduto);
-        this.numeroDePaginas = numeroDePaginas;
+    public Livro(int id, String nomeProduto, float preco, String nomeAutor, String genero, int numeroDePaginas) {
+        super(id, nomeProduto, preco);
         this.nomeAutor = nomeAutor;
         this.genero = genero;
-    }
-
-    public Livro () {
-
+        this.numeroDePaginas = numeroDePaginas;
     }
 
     public int getNumeroDePaginas() {
@@ -39,9 +35,14 @@ public class Livro extends Produto {
         this.nomeAutor = nomeAutor;
     }
 
-    @Override
+
     public void visualizar() {
-        super.visualizar();
+        System.out.println("\n\n***********************************************************");
+        System.out.println("Dados do Produto:");
+        System.out.println("***********************************************************");
+        System.out.println("Nome: " + getNomeProduto());
+        System.out.println("ID: " + getId());
+        System.out.println("Preço: " + getPreco());
         System.out.println("Gênero: " + this.genero);
         System.out.println("Nome do Autor: " + this.nomeAutor);
         System.out.println("Número de Páginas: " + this.numeroDePaginas);

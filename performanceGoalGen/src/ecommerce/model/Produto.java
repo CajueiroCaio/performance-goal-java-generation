@@ -5,7 +5,7 @@ public abstract class Produto {
     private float preco;
     private String nomeProduto;
 
-    public Produto(int id, float preco, String nomeProduto) {
+    public Produto(int id, String nomeProduto, float preco ) {
         this.id = id;
         this.preco = preco;
         this.nomeProduto = nomeProduto;
@@ -44,8 +44,9 @@ public abstract class Produto {
         System.out.println("\n\n***********************************************************");
         System.out.println("Dados do Produto:");
         System.out.println("***********************************************************");
-        System.out.println("Nome: " + this.nomeProduto);
-        System.out.println("ID: " + this.id);
-        System.out.println("Preço: " + this.preco);
+        System.out.println("Nome: " + getNomeProduto());
+        System.out.println("ID: " + getId());
+        System.out.println("Preço: " + getPreco());
     }
+
 }

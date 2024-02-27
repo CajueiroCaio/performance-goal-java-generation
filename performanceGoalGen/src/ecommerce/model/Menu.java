@@ -11,8 +11,8 @@ public class Menu {
     public static void main(String [] args) {
         Scanner leia = new Scanner(System.in);
 
-        int opcao, id, numeroDePaginas;
-        float preco;
+        int opcao, id, numeroDePaginas = 0;
+        float preco = 0.0f;
         String nomeAutor, nomeProduto, genero;
 
         ProdutoController livros = new ProdutoController();
@@ -61,18 +61,22 @@ public class Menu {
 
                     System.out.println("Digite o Nome do Produto: ");
                     nomeProduto = leia.nextLine();
+                    leia.nextLine();
                     System.out.println("Digite o Nome do Autor: ");
                     nomeAutor = leia.nextLine();
+                    leia.nextLine();
                     System.out.println("Digite o Gênero: ");
                     genero = leia.nextLine();
+                    leia.nextLine();
+
                     System.out.println("Digite a Quantidade de Páginas: ");
                     numeroDePaginas = leia.nextInt();
-                    leia.skip("\\R?");
+                    leia.nextLine();
                     System.out.println("Digite o Preço do Produto: ");
                     preco = leia.nextFloat();
-                    leia.skip("\\R?");
+                    leia.nextLine();
 
-                    livros.cadastrar(new Livro(livros.gerarID(), numeroDePaginas, preco, nomeProduto, nomeAutor, genero));
+                    livros.cadastrar(new Livro(livros.gerarID(), nomeProduto, preco, nomeAutor, genero, numeroDePaginas));
 
                     keyPress();
                     break;
@@ -86,6 +90,7 @@ public class Menu {
                 case 3:
                     System.out.println("\n Buscar Livro por ID");
                     id = leia.nextInt();
+                    leia.nextLine();
 
                     livros.procurarPorID(id);
 
@@ -96,13 +101,40 @@ public class Menu {
 
                     System.out.println("Digite o ID do livro: ");
                     id = leia.nextInt();
+                    leia.nextLine();
 
                     var buscaPorID = livros.buscarNaCollection(id);
+
+                    if (buscaPorID != null) {
+                        System.out.println("Digite o Nome do Produto: ");
+                        nomeProduto = leia.nextLine();
+                        leia.nextLine();
+                        System.out.println("Digite o Nome do Autor: ");
+                        nomeAutor = leia.nextLine();
+                        leia.nextLine();
+                        System.out.println("Digite o Gênero: ");
+                        genero = leia.nextLine();
+                        leia.nextLine();
+                        System.out.println("Digite a Quantidade de Páginas: ");
+                        numeroDePaginas = leia.nextInt();
+                        leia.nextLine();
+                        System.out.println("Digite o Preço do Produto: ");
+                        preco = leia.nextFloat();
+                        leia.nextLine();
+
+                        livros.cadastrar(new Livro(livros.gerarID(), nomeProduto, preco, nomeAutor, genero, numeroDePaginas));
+                    }
 
                     keyPress();
                     break;
                 case 5:
                     System.out.println("\n Apagar Livro");
+
+                    System.out.println("Qual o ID do livro que deseja apagar? ");
+                    id = leia.nextInt();
+                    leia.nextLine();
+
+                    livros.deletar(id);
 
                     keyPress();
                     break;

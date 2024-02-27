@@ -25,7 +25,6 @@ public class ProdutoController implements Repositorio {
         for (var livro : listaProdutos) {
             livro.visualizar();
         }
-
     }
 
     @Override
@@ -44,7 +43,6 @@ public class ProdutoController implements Repositorio {
         } else {
             System.out.println("\nA conta numero " + livro.getId() + " não foi encontrada!");
         }
-
     }
 
     @Override
