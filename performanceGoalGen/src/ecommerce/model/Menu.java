@@ -1,5 +1,6 @@
 package ecommerce.model;
 
+import ecommerce.controller.ProdutoController;
 import ecommerce.util.Cores;
 
 import java.io.IOException;
@@ -10,9 +11,11 @@ public class Menu {
     public static void main(String [] args) {
         Scanner leia = new Scanner(System.in);
 
-        int opcao, id, genero, numeroDePaginas;
+        int opcao, id, numeroDePaginas;
         float preco;
-        String nomeAutor, nomeProduto;
+        String nomeAutor, nomeProduto, genero;
+
+        ProdutoController livros = new ProdutoController();
 
         opcao = 0;
 
@@ -56,20 +59,45 @@ public class Menu {
                 case 1:
                     System.out.println("\n Adicionar Livros");
 
+                    System.out.println("Digite o Nome do Produto: ");
+                    nomeProduto = leia.nextLine();
+                    System.out.println("Digite o Nome do Autor: ");
+                    nomeAutor = leia.nextLine();
+                    System.out.println("Digite o Gênero: ");
+                    genero = leia.nextLine();
+                    System.out.println("Digite a Quantidade de Páginas: ");
+                    numeroDePaginas = leia.nextInt();
+                    leia.skip("\\R?");
+                    System.out.println("Digite o Preço do Produto: ");
+                    preco = leia.nextFloat();
+                    leia.skip("\\R?");
+
+                    livros.cadastrar(new Livro(livros.gerarID(), numeroDePaginas, preco, nomeProduto, nomeAutor, genero));
+
                     keyPress();
                     break;
                 case 2:
                     System.out.println("\n Listar Todos os Livros ");
 
+                    livros.listarTodos();
+
                     keyPress();
                     break;
                 case 3:
                     System.out.println("\n Buscar Livro por ID");
+                    id = leia.nextInt();
+
+                    livros.procurarPorID(id);
 
                     keyPress();
                     break;
                 case 4:
                     System.out.println("\n Atualizar Dados do Livro");
+
+                    System.out.println("Digite o ID do livro: ");
+                    id = leia.nextInt();
+
+                    var buscaPorID = livros.buscarNaCollection(id);
 
                     keyPress();
                     break;
